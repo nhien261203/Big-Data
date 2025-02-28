@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff0050;
+        }
+        pre {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 600px;
+            margin: auto;
+            overflow: auto;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #ff0050;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #cc0040;
+        }
+    </style>
+    <script>
+        async function fetchVideos() {
+            const response = await fetch('/videos');
+            const data = await response.json();
+            document.getElementById("data").innerText = JSON.stringify(data, null, 2);
+        }
+    </script>
+</head>
+<body>
+    <h1>🔥 Trending TikTok Videos 🔥</h1>
+    <button onclick="fetchVideos()">🔄 Refresh Data</button>
+    <pre id="data">Loading...</pre>
+</body>
+</html>
